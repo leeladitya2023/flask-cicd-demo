@@ -26,9 +26,9 @@ pipeline {
             steps {
                 bat """
                     echo Running test container...
-                    docker run -d -p 5000:5000 --name flask_test %IMAGE_NAME%:latest
+                    docker run -d -p 5001:5000 --name flask_test %IMAGE_NAME%:latest
                     timeout /t 5
-                    curl http://localhost:5000
+                    curl http://localhost:5001
                     docker stop flask_test
                     docker rm flask_test
                 """
@@ -52,11 +52,12 @@ pipeline {
                     echo Deploying latest container...
                     docker stop flask_cicd_demo
                     docker rm flask_cicd_demo
-                    docker run -d -p 5000:5000 --name flask_cicd_demo %IMAGE_NAME%:latest
+                    docker run -d -p 5001:5000 --name flask_cicd_demo %IMAGE_NAME%:latest
                     echo Deployment complete.
                 """
             }
         }
     }
 }
+
 
