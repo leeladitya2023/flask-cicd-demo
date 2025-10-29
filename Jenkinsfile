@@ -17,7 +17,7 @@ pipeline {
             steps {
                 bat """
                     echo Building Docker image...
-                    docker build -t %IMAGE_NAME%:latest .
+                    docker build -t leeladitya2024/flask-cicd-demo:latest -f app/Dockerfile .
                 """
             }
         }
@@ -59,3 +59,4 @@ pipeline {
         }
     }
 }
+
